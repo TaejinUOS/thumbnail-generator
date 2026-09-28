@@ -1,0 +1,6 @@
+SB 어그로체 Bold (SB 어그로 B.ttf)
+제작 및 권리 보유: (주)샌드박스네트워크
+사용자의 PC에 설치되어 있던 원본 폰트를 이 로컬 도구에 포함했습니다.
+폰트 파일을 변경하지 않았습니다.
+제작사: https://sandbox.co.kr/
+폰트 안내: https://noonnu.cc/font_page/738

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111414">
+  <title>LoL 썸네일 스튜디오</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23c7f36b'/%3E%3Cpath d='M19 13v22l18-11z' fill='%23111414'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/champion-picker.css">
+  <link rel="stylesheet" href="/caption.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="썸네일 스튜디오 홈"><span class="brand-icon">▶</span><span>THUMBNAIL<span class="brand-light"> STUDIO</span></span><span class="brand-tag">LOL</span></a>
+    <span class="local-badge"><i></i> 로컬 작업 공간</span>
+  </header>
+  <main>
+    <div class="page-heading"><div><p class="eyebrow">LEAGUE OF LEGENDS · FULL GAME</p><h1>한 장에 담는, 오늘의 게임<span>.</span></h1><p class="intro">배경부터 매치업까지. 풀영상에 필요한 정보를 간결하게 담아보세요.</p></div><span class="format-badge">16:9 <span> / </span> PNG</span></div>
+    <div class="workspace">
+      <aside class="controls" aria-label="썸네일 설정">
+        <section class="control-section">
+          <div class="section-title"><h2><span>01</span> 배경 이미지</h2><button id="refresh" class="text-button" type="button">↻ 새로고침</button></div>
+          <label for="background">배경 선택</label><div class="background-picker"><select id="background"><option value="">배경을 불러오는 중…</option></select><button id="random-background" class="random-button" type="button" title="다른 배경을 무작위로 선택" disabled>🎲 랜덤</button></div>
+          <p class="hint" id="background-hint">background-images 폴더의 이미지를 사용합니다.</p>
+          <div class="slider-label"><label for="dim">배경 어둡게</label><output id="dim-value" for="dim">20%</output></div><input id="dim" type="range" min="0" max="70" step="1" value="20">
+          <details><summary>배경 위치 조절</summary><div class="slider-label"><label for="position-x">가로 위치</label><output id="position-x-value">50%</output></div><input id="position-x" type="range" min="0" max="100" value="50"><div class="slider-label"><label for="position-y">세로 위치</label><output id="position-y-value">50%</output></div><input id="position-y" type="range" min="0" max="100" value="50"></details>
+        </section>
+        <section class="control-section">
+          <div class="section-title"><h2><span>02</span> 티어</h2><span class="placement">좌측 상단</span></div>
+          <div class="two-columns"><div><label for="tier">티어</label><select id="tier"></select></div><div><label id="division-label" for="division">단계</label><select id="division"><option>I</option><option>II</option><option>III</option><option>IV</option></select><select id="lp" aria-label="100점 구간" hidden></select></div></div>
+          <p class="hint">마스터 이상은 100 LP 구간으로 선택합니다.</p>
+        </section>
+        <section class="control-section champion-section">
+          <div class="section-title"><h2><span>03</span> 챔피언</h2><span class="placement">각각 최대 3명</span></div>
+          <div class="team-heading"><span class="team-dot me-dot"></span><h3>Me</h3><span>좌측 하단</span></div><div id="me-selects" class="champion-selects"></div>
+          <div class="team-heading enemy-heading"><span class="team-dot enemy-dot"></span><h3>상대</h3><span>우측 하단</span></div><div id="enemy-selects" class="champion-selects"></div>
+          <p class="hint">이름·영문·초성으로 검색하세요. ×를 누르면 선택을 해제합니다.</p>
+        </section>
+        <section class="control-section caption-section">
+          <div class="section-title"><h2><span>04</span> 중앙 문구</h2><span class="placement">SB 어그로체 Bold</span></div>
+          <label for="caption">문구 입력</label>
+          <textarea id="caption" class="caption-input" rows="2" maxlength="100" placeholder="오늘의 한타, 이렇게 이겼습니다" aria-describedby="caption-hint"></textarea>
+          <p class="hint" id="caption-hint">Enter로 줄바꿈 · 최대 100자 · 비워두면 표시하지 않습니다.</p>
+          <div class="slider-label"><label for="caption-size">글자 크기</label><output id="caption-size-value" for="caption-size">72 px</output></div>
+          <input id="caption-size" type="range" min="24" max="160" step="1" value="72">
+          <fieldset class="caption-colors"><legend>글자 색상</legend>
+            <label class="caption-color"><input type="radio" name="caption-color" value="#ffffff" checked><span class="caption-swatch white" aria-hidden="true"></span>화이트</label>
+            <label class="caption-color"><input type="radio" name="caption-color" value="#000000"><span class="caption-swatch black" aria-hidden="true"></span>검정</label>
+          </fieldset>
+          <div class="caption-switches">
+            <label for="caption-shadow"><input id="caption-shadow" type="checkbox" checked>그림자</label>
+            <label for="caption-background"><input id="caption-background" type="checkbox" checked>검정 배경</label>
+          </div>
+          <p id="caption-fit" class="hint">긴 문구는 중앙 영역에 맞춰 자동으로 줄바꿈·축소됩니다.</p>
+        </section>
+      </aside>
+      <section class="preview-column" aria-label="썸네일 미리보기">
+        <div class="preview-toolbar"><h2><span class="live-dot"></span> 미리보기</h2><span>1280 × 720 px</span></div>
+        <div class="preview-stage"><canvas id="thumbnail" width="1280" height="720" aria-label="생성될 썸네일 미리보기"></canvas><div id="empty-state" class="empty-state" hidden><span class="empty-icon">▧</span><h3>배경을 준비해주세요</h3><p><code>background-images</code> 폴더에 사진을 넣은 뒤<br>왼쪽의 <strong>새로고침</strong>을 눌러주세요.</p><span>JPG · PNG · WEBP · AVIF · GIF</span></div></div>
+        <div class="preview-meta"><span><i class="live-dot"></i> 선택한 내용이 바로 반영됩니다</span><span id="date-label"></span></div>
+        <div class="export-panel"><div><h2>영상의 첫인상, 준비되셨나요?</h2><p>미리보기 그대로 고화질 PNG로 저장합니다.</p></div><button id="download" class="primary-button" type="button" disabled><span>↓</span> PNG 다운로드</button></div>
+        <p id="status" class="status" role="status" aria-live="polite">이미지를 준비하고 있습니다…</p>
+        <div class="layout-note"><span>썸네일 구성</span><div><b>↖</b> 티어 휘장 · 단계</div><div><b>↗</b> 생성 날짜</div><div><b>↙</b> Me 챔피언</div><div><b>↘</b> 상대 챔피언</div></div>
+      </section>
+    </div>
+    <footer><span>LOL THUMBNAIL STUDIO</span><span>Built for your next full game.</span></footer>
+  </main>
+</body>
+</html>

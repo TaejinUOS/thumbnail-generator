@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'SB Aggro';
+  src: url('/assets/fonts/SBAggroB.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.caption-input {
+  width: 100%; min-height: 88px; resize: vertical;
+  border: 1px solid #3b433c; border-radius: 7px;
+  padding: 12px; background: var(--field); color: var(--text);
+  font: 700 15px/1.6 'SB Aggro', 'Malgun Gothic', sans-serif;
+}
+.caption-input::placeholder { color: #838e7e; }
+.caption-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.caption-section .slider-label { margin-top: 16px; }
+.caption-colors { display: flex; gap: 8px; border: 0; padding: 0; margin: 20px 0 16px; }
+.caption-colors legend { color: #b0b9b0; font-size: 12px; padding: 0; margin-bottom: 9px; }
+.caption-color { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; padding: 9px 8px; border: 1px solid #3b433c; border-radius: 7px; background: var(--field); cursor: pointer; }
+.caption-color:has(input:checked) { border-color: var(--accent); color: var(--accent); }
+.caption-color input { margin: 0; accent-color: var(--accent); }
+.caption-swatch { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #6c7664; }
+.caption-swatch.white { background: #fff; }
+.caption-swatch.black { background: #000; }
+.caption-switches { display: flex; gap: 18px; flex-wrap: wrap; }
+.caption-switches label { display: flex; align-items: center; gap: 8px; margin: 0; cursor: pointer; }
+.caption-switches input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); cursor: pointer; }
